@@ -106,7 +106,7 @@ The `stop` entry needs `"loop_limit": null`: Cursor disables `stop` hooks after 
 ## Install
 
 ```sh
-omarchy plugin add https://github.com/tornikegomareli/omarchy-spaces.git --enable
+omarchy plugin add https://github.com/PraiseTheDuck/omarchy-spaces.git --enable
 omarchy plugin disable omarchy.workspaces   # optional: replace the built-in switcher
 ```
 
