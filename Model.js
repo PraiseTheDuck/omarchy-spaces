@@ -277,12 +277,15 @@ var TERMINAL_APP_IDS = [
 ]
 
 var AGENTS = [
+  // Grok's title puts its name last ("… - grok") and, while it works, starts
+  // with the same braille spinner Codex uses. Checked first, so a trailing
+  // "grok" wins over Claude's unanchored name and that spinner.
+  { id: "agent.grok", name: "Grok", icon: "grok", light: true,
+    title: /(?:^grok(?:\s|$)| - grok$)/i },
   { id: "agent.claude", name: "Claude Code", icon: "claude", light: false,
     title: /^[\u2733\u2722\u2736\u273b\u273d\u00b7\u25d0-\u25d3\u23fa] |\bClaude Code\b/ },
   { id: "agent.codex", name: "Codex", icon: "codex", light: true,
-    title: /^[\u2801-\u28ff] |^\[ *\S+ *\] Action Required\b/ },
-  { id: "agent.grok", name: "Grok", icon: "grok", light: true,
-    title: /^grok(\s|$)/i }
+    title: /^[\u2801-\u28ff] |^\[ *\S+ *\] Action Required\b/ }
 ]
 
 function agentFor(appId) {

@@ -546,6 +546,8 @@ test("agentAppId recognises Claude Code, Codex and Grok terminals", () => {
   assert.strictEqual(M.agentAppId(g, "Collect iPad boot logs | tcballard"), g)
   assert.strictEqual(M.agentAppId(g, "[ . ] Action Required | Build Omarchy shortcut wheel | tcballard"), "agent.codex")
   assert.strictEqual(M.agentAppId(g, "grok"), "agent.grok")
+  assert.strictEqual(M.agentAppId(g, "Zathura as document viewer, Evince role … - grok"), "agent.grok")
+  assert.strictEqual(M.agentAppId(g, "\u2836 - List titles - Plugin shows Claude Code icon - grok"), "agent.grok")
   assert.strictEqual(M.agentAppId(g, "~/code"), g)
   assert.strictEqual(M.agentAppId(g, "grokking notes"), g)
   assert.strictEqual(M.agentAppId(g, ""), g)
@@ -573,7 +575,7 @@ test("agentAppId only recognises agents in known terminals", () => {
       "Pricing | Vercel - Chromium",
       "Claude Code overview - Anthropic - Chromium",
       "grok - Google Search - Chromium",
-      "Claude Code", "grok", "\u280b scratchpad",
+      "Claude Code", "grok", "notes - grok", "\u280b scratchpad",
       "[ . ] Action Required | Build Omarchy shortcut wheel | tcballard"
     ]) assert.strictEqual(M.agentAppId(appId, title), appId, String(appId) + ": " + title)
   }
